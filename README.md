@@ -12,7 +12,7 @@ The script handles the Incus export process, retention management, and logging, 
 
 ## Installation
 ```bash
-git clone https://github.com/your-repo/incus-backup.git
+git clone https://github.com/M3t4Data/incus-backup.git
 cd incus-backup
 chmod +x incus-export.sh
 ```
