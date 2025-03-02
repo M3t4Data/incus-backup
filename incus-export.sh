@@ -140,13 +140,7 @@ do_export() {
     local timestamp
     timestamp="$(get_file_timestamp)"
 
-    # Debug pour voir la valeur de compression
-    log "INFO" "export_debug" "Compression value: $compression"
-
     local output_file="${dest}/${prefix}${instance}${suffix}-${timestamp}.tar.${compression}"
-
-    # Debug pour voir le nom de fichier construit
-    log "INFO" "export_debug" "Output file: $output_file"
 
     local export_options=("--compression=${compression}")
     [[ "$optimized_storage" == "true" ]] && export_options+=("--optimized-storage")
@@ -173,7 +167,7 @@ process_instance() {
     if [[ "$enabled" != "true" ]]; then
         log "INFO" "config_check" "Export not enabled for instance '$instance'"
         return 0
-    fi  # <- Il manquait ce 'fi'
+    fi
 
     local dest
     dest=$(incus config get -e "$instance" "user.incus-export.dest" $project_arg 2>/dev/null || echo "$DEFAULT_BACKUP_DIR")
